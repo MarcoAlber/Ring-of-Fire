@@ -1,15 +1,15 @@
 export class Game {
-    public players: string[] = [];
+    public players: string[] = ['Peter', 'Gregor', 'Ferando'];
     public deck: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
 
     constructor() {
         for (let i = 1; i < 14; i++) {
-            this.deck.push('../assets/img/cards/diamonds_' + i + ".png");
-            this.deck.push('../assets/img/cards/clubs_' + i + ".png");
-            this.deck.push('../assets/img/cards/hearts_' + i + ".png");
-            this.deck.push('../assets/img/cards/spade_' + i + ".png");
+            this.deck.push('diamonds_' + i);
+            this.deck.push('clubs_' + i);
+            this.deck.push('hearts_' + i);
+            this.deck.push('spade_' + i);
         }
         shuffleArray(this.deck);
     }

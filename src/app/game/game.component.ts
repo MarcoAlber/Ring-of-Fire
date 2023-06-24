@@ -8,6 +8,7 @@ import { Game } from '../modules/game';
 })
 export class GameComponent implements OnInit {
   takeCardAnimation = false;
+  currentCard: string = '';
   game: Game;
 
   constructor() {
@@ -24,6 +25,14 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    this.takeCardAnimation = true;
+    if (!this.takeCardAnimation) {
+      this.currentCard = this.game.deck.pop() as string;
+      this.takeCardAnimation = true;
+      this.game.playedCards.push(this.currentCard);
+
+      setTimeout(() => {
+        this.takeCardAnimation = false;
+      }, 1250);
+    }
   }
 }

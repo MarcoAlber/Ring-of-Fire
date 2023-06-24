@@ -27,7 +27,18 @@
     }
 }
 
+.player-container {
+    position: absolute;
+    right: 0;
+    width: auto;
+    padding-right: 25px;
+    background-color: orange;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
 .top-card {
+    margin-right: calc(4 * 1.5%);
     transition: all 125ms ease-in-out;
 
     &:hover {
@@ -37,8 +48,9 @@
 }
 
 .take-card {
+    margin-right: calc(4 * 1.5%);
     animation: pick-card-animation 1.25s ease-in-out;
-    transform: scale(1.2) translateX(120%) translateY(-65%) rotate(-10deg);
+    transform: scale(1.2) translateX(-120%) translateY(-65%) rotate(10deg);
 }
 
 @keyframes pick-card-animation {
@@ -51,7 +63,7 @@
     }
 
     100% {
-        transform: scale(1.2) translateX(120%) translateY(-65%) rotate(-10deg);
+        transform: scale(1.2) translateX(-120%) translateY(-65%) rotate(10deg);
     }
 }
 
@@ -65,14 +77,14 @@
     }
 
     100% {
-        transform: scale(1.2) translateX(20%) translateY(-105%) rotate(-10deg);
+        transform: scale(1.2) translateX(-20%) translateY(-105%) rotate(10deg);
     }
 }
 
 @media(orientation: portrait) {
     .take-card {
         animation: pick-card-animation-responsive 1.25s ease-in-out;
-        transform: scale(1.2) translateX(20%) translateY(-105%) rotate(-10deg);
+        transform: scale(1.2) translateX(-20%) translateY(-105%) rotate(10deg);
     }
 
     .card-stack {
