@@ -30,11 +30,12 @@
 .player-container {
     position: absolute;
     right: 0;
-    width: auto;
-    padding-right: 25px;
-    background-color: orange;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+}
+
+.btn-add {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
 }
 
 .top-card {

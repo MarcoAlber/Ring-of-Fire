@@ -2,15 +2,24 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    width: auto;
+    padding-right: 25px;
+    background-color: rgba(200, 200, 200, 0.8);
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
 
     span {
         font-size: 32px;
     }
 
     img {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        height: 70px;
         object-fit: contain;
         border-radius: 100%;
     }
+}
+
+.current-player {
+    background-color: orange;
 }
