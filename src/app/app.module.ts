@@ -13,7 +13,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 import { DialogAddPlayerComponent } from './dialog-add-player/dialog-add-player.component';
+import { CardDescriptionComponent } from './card-description/card-description.component';
 
 
 
@@ -23,7 +25,8 @@ import { DialogAddPlayerComponent } from './dialog-add-player/dialog-add-player.
     StartScreenComponent,
     GameComponent,
     PlayerComponent,
-    DialogAddPlayerComponent
+    DialogAddPlayerComponent,
+    CardDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { DialogAddPlayerComponent } from './dialog-add-player/dialog-add-player.
     MatDialogModule,
     FormsModule,
     MatInputModule,
+    MatCardModule,
     MatFormFieldModule
   ],
   providers: [],
