@@ -23,7 +23,6 @@ export class GameComponent implements OnInit {
 
   newGame() {
     this.game = new Game();
-    console.log(this.game);
   }
 
   takeCard() {
@@ -32,12 +31,8 @@ export class GameComponent implements OnInit {
       this.takeCardAnimation = true;
       this.game.playedCards.push(this.currentCard);
 
-      if (this.game.currentPlayer < this.game.players.length - 1) {
-        this.game.currentPlayer++;
-      }
-      else {
-        this.game.currentPlayer = 0;
-      }
+      this.game.currentPlayer++;
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
 
       setTimeout(() => {
         this.takeCardAnimation = false;
@@ -49,7 +44,7 @@ export class GameComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
     dialogRef.afterClosed().subscribe((name: string) => {
-      if (name.length > 0) {
+      if (name && name.length > 0) {
         this.game.players.push(name);
       }
     });
