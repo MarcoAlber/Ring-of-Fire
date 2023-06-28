@@ -4,12 +4,12 @@
 <div class="board">
     <div class="card-stack">
         <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'margin-right.%' : i * 1.5}"
-            src="../assets/img/cards/card_cover.png">
-        <img (click)="takeCard()" class="top-card" src="../assets/img/cards/card_cover.png">
+            src="assets/img/cards/card_cover.png">
+        <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
         <img (click)="takeCard()" *ngIf="takeCardAnimation" [class.take-card]="takeCardAnimation"
-            src="../assets/img/cards/{{ currentCard }}.png">
+            src="assets/img/cards/{{ currentCard }}.png">
         <img *ngFor="let playedCard of game.playedCards" class="take-card"
-            src="../assets/img/cards/{{ playedCard }}.png">
+            src="assets/img/cards/{{ playedCard }}.png">
     </div>
 </div>
 
