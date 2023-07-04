@@ -12,8 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  takeCardAnimation = false;
-  currentCard: string = '';
+
   game: Game;
   gameId: string = '';
   item$: Observable<any> | undefined;
@@ -39,6 +38,8 @@ export class GameComponent implements OnInit {
         this.game.playedCards = newCard['game'].playedCards;
         this.game.deck = newCard['game'].deck;
         this.game.players = newCard['game'].players;
+        this.game.takeCardAnimation = newCard['game'].takeCardAnimation;
+        this.game.currentCard = newCard['game'].currentCard;
         this.card = newCard;
       });
     });
@@ -56,11 +57,10 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.takeCardAnimation) {
-      this.currentCard = this.game.deck.pop() as string;
-      this.takeCardAnimation = true;
-      this.game.playedCards.push(this.currentCard);
-      this.updateGame();
+    if (!this.game.takeCardAnimation) {
+      this.game.currentCard = this.game.deck.pop() as string;
+      this.game.takeCardAnimation = true;
+      this.game.playedCards.push(this.game.currentCard);
 
       if (this.game.currentPlayer < this.game.players.length - 1) {
         this.game.currentPlayer++;
@@ -68,9 +68,10 @@ export class GameComponent implements OnInit {
       else {
         this.game.currentPlayer = 0;
       }
+      this.updateGame();
 
       setTimeout(() => {
-        this.takeCardAnimation = false;
+        this.game.takeCardAnimation = false;
         this.updateGame();
       }, 1250);
     }
