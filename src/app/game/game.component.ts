@@ -34,7 +34,7 @@ export class GameComponent implements OnInit {
       this.gameId = params['id'];
       this.item$ = docData(pathId);
       this.item$.subscribe((newCard) => {
-        console.log('Game', newCard);
+        console.log('Test', newCard);
         this.game.currentPlayer = newCard['game'].currentPlayer;
         this.game.playedCards = newCard['game'].playedCards;
         this.game.deck = newCard['game'].deck;
