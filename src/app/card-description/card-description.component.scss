@@ -1,0 +1,31 @@
+mat-card {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+@media(orientation: portrait) {
+    mat-card {
+        max-height: 100px;
+    }
+}
+
+@media(max-width: 900px) and (orientation: landscape) {
+    mat-card {
+        max-height: 80px;
+    }
+}

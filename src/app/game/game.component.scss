@@ -27,15 +27,54 @@
     }
 }
 
-.player-container {
-    position: absolute;
-    right: 0;
-}
-
 .btn-add {
     position: absolute;
     right: 30px;
     bottom: 30px;
+}
+
+.scroll-container {
+    height: 75dvh;
+    overflow-y: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    align-items: flex-end;
+
+    app-player {
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    &::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+.scroll-container-responsive {
+    width: 100%;
+    overflow-x: auto;
+    position: absolute;
+    display: flex;
+    padding-bottom: 20px;
+
+    app-player-mobile {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
 }
 
 .top-card {
@@ -55,10 +94,15 @@
     right: 115px;
 }
 
+.card-red {
+    color: red;
+}
+
 .take-card {
     margin-right: calc(4 * 1.5%);
     animation: pick-card-animation 1.25s ease-in-out;
     transform: scale(1.2) translateX(-120%) translateY(-65%) rotate(10deg);
+    z-index: 1;
 }
 
 @keyframes pick-card-animation {
@@ -81,21 +125,59 @@
     }
 
     40% {
-        transform: scale(1.7);
+        transform: scale(1.4) translateX(20%);
     }
 
     100% {
-        transform: scale(1.2) translateX(-20%) translateY(-105%) rotate(10deg);
+        transform: scale(0.8) translateX(150%) translateY(0) rotate(10deg);
     }
 }
 
 @media(orientation: portrait) {
     .take-card {
         animation: pick-card-animation-responsive 1.25s ease-in-out;
-        transform: scale(1.2) translateX(-20%) translateY(-105%) rotate(10deg);
+        transform: scale(0.8) translateX(150%) translateY(0) rotate(10deg);
+    }
+
+    .hide-mobile {
+        display: none;
+    }
+
+    .board {
+        justify-content: flex-start;
     }
 
     .card-stack {
-        margin-top: 45%;
+        margin-left: 10%;
+    }
+
+    .card-position {
+        left: 25px;
+    }
+
+    .top-card {
+        margin-right: calc(4 * 1.5%);
+        transition: all 125ms ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.02) translateY(25px);
+        }
+    }
+}
+
+@media (orientation: landscape) {
+    .hide-desktop {
+        display: none;
+    }
+}
+
+@media(max-width: 900px) and (orientation: landscape) {
+    .card-stack {
+        margin-top: 0%;
+    }
+
+    .scroll-container {
+        height: 65dvh;
     }
 }

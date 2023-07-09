@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { Game } from '../modules/game';
 
 @Component({
   selector: 'app-card-description',
@@ -22,11 +23,12 @@ export class CardDescriptionComponent implements OnChanges {
     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
   ];
 
+  game: Game;
   title: string = '';
   description: string = '';
   @Input() card: any;
 
-  constructor() { }
+  constructor() { this.game = new Game(); }
 
   ngOnChanges() {
     if (this.card) {
@@ -35,5 +37,4 @@ export class CardDescriptionComponent implements OnChanges {
       this.description = this.cardAction[cardNumber - 1].description;
     }
   }
-
 }

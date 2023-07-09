@@ -18,6 +18,7 @@ export class GameComponent implements OnInit {
   item$: Observable<any> | undefined;
   card: any;
   firestore: Firestore = inject(Firestore);
+  cardStyle: any = {};
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {
     this.game = new Game();
@@ -57,7 +58,7 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.game.takeCardAnimation) {
+    if (!this.game.takeCardAnimation && this.minTwoPlayers()) {
       this.game.currentCard = this.game.deck.pop() as string;
       this.game.takeCardAnimation = true;
       this.game.playedCards.push(this.game.currentCard);
@@ -75,6 +76,17 @@ export class GameComponent implements OnInit {
         this.updateGame();
       }, 1250);
     }
+    if (!this.minTwoPlayers()) {
+      this.swapTextColor();
+    }
+  }
+
+  swapTextColor() {
+    this.cardStyle = { color: 'red' };
+
+    setTimeout(() => {
+      this.cardStyle = { color: 'black' };
+    }, 1500);
   }
 
   openDialog(): void {
@@ -86,5 +98,9 @@ export class GameComponent implements OnInit {
         this.updateGame();
       }
     });
+  }
+
+  minTwoPlayers() {
+    return this.game.players.length > 1;
   }
 }
