@@ -13,7 +13,7 @@
         <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'margin-right.%' : i * 1.5}"
             src="assets/img/cards/card_cover.png">
         <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
-        <img (click)="takeCard()" class="take-card" *ngIf="game.takeCardAnimation"
+        <img (click)="takeCard()" *ngIf="game.takeCardAnimation" [class.take-card]="game.takeCardAnimation"
             src="assets/img/cards/{{ game.currentCard }}.png">
         <img *ngFor="let playedCard of game.playedCards" class="take-card" src="assets/img/cards/{{ playedCard }}.png">
     </div>

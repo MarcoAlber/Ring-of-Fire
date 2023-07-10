@@ -11,6 +11,9 @@
 
 .card-stack {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30dvh;
     width: 30%;
     margin-top: 15%;
@@ -116,24 +119,24 @@
     }
 }
 
-@keyframes pick-card-animation-responsive {
-    0% {
-        transform: scale(1);
-    }
-
-    40% {
-        transform: scale(1.4) translateX(20%);
-    }
-
-    100% {
-        transform: scale(0.8) translateX(150%) translateY(0) rotate(10deg);
-    }
-}
-
 @media(orientation: portrait) {
     .take-card {
         animation: pick-card-animation-responsive 1.25s ease-in-out;
         transform: scale(0.8) translateX(150%) translateY(0) rotate(10deg);
+    }
+
+    @keyframes pick-card-animation-responsive {
+        0% {
+            transform: scale(1);
+        }
+
+        40% {
+            transform: scale(1.4) translateX(20%);
+        }
+
+        100% {
+            transform: scale(0.8) translateX(150%) translateY(0) rotate(10deg);
+        }
     }
 
     .hide-mobile {
