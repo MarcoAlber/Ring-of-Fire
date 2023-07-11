@@ -5,6 +5,7 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { Firestore, collection, doc, setDoc, getFirestore, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { EditPlayerComponent } from '../edit-player/edit-player.component';
 
 @Component({
   selector: 'app-game',
@@ -39,6 +40,7 @@ export class GameComponent implements OnInit {
         this.game.playedCards = newCard['game'].playedCards;
         this.game.deck = newCard['game'].deck;
         this.game.players = newCard['game'].players;
+        this.game.player_images = newCard['game'].player_images;
         this.game.takeCardAnimation = newCard['game'].takeCardAnimation;
         this.game.currentCard = newCard['game'].currentCard;
         this.card = newCard;
@@ -95,6 +97,7 @@ export class GameComponent implements OnInit {
     dialogRef.afterClosed().subscribe((name: string) => {
       if (name && name.length > 0) {
         this.game.players.push(name);
+        this.game.player_images.push('1.webp');
         this.updateGame();
       }
     });
@@ -102,5 +105,26 @@ export class GameComponent implements OnInit {
 
   minTwoPlayers() {
     return this.game.players.length > 1;
+  }
+
+  editPlayer(playerId: number) {
+    console.log('edit player', playerId);
+
+    const dialogRef = this.dialog.open(EditPlayerComponent);
+
+    dialogRef.afterClosed().subscribe((change: string) => {
+      if (change) {
+        console.log('changed profile', change);
+
+        if (change == 'DELETE') {
+          this.game.players.splice(playerId, 1);
+          this.game.player_images.splice(playerId, 1);
+        }
+        else {
+          this.game.player_images[playerId] = change;
+        }
+        this.updateGame();
+      }
+    });
   }
 }
