@@ -12,7 +12,7 @@ export class Game {
     }
 
     public createDeck() {
-        for (let i = 1; i < 2; i++) {
+        for (let i = 1; i < 14; i++) {
             this.deck.push('diamonds_' + i);
             this.deck.push('clubs_' + i);
             this.deck.push('hearts_' + i);
