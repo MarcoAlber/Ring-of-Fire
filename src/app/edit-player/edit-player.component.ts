@@ -16,5 +16,4 @@ export class EditPlayerComponent {
     'serious-woman.svg',
     'winkboy.png'
   ];
-
 }

@@ -1,10 +1,20 @@
+.edit-container {
+    margin: 20px;
+}
+
 .profile-picture {
     height: 100px;
     width: 100px;
+    margin-bottom: 20px;
     object-fit: contain;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
         filter: brightness(0.7);
     }
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
 }

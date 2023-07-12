@@ -2,10 +2,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Game } from '../modules/game';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { Firestore, collection, doc, setDoc, getFirestore, docData } from '@angular/fire/firestore';
+import { Firestore, collection, doc, setDoc, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { EditPlayerComponent } from '../edit-player/edit-player.component';
+import { NewGameComponent } from '../new-game/new-game.component';
 
 @Component({
   selector: 'app-game',
@@ -20,6 +21,7 @@ export class GameComponent implements OnInit {
   card: any;
   firestore: Firestore = inject(Firestore);
   cardStyle: any = {};
+  gameOver = false;
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {
     this.game = new Game();
@@ -50,7 +52,6 @@ export class GameComponent implements OnInit {
 
   newGame() {
     this.game = new Game();
-    //addDoc(itemCollection, { game: this.game.toJson() });
   }
 
   updateGame() {
@@ -60,7 +61,21 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.game.takeCardAnimation && this.minTwoPlayers()) {
+    if (this.game.deck.length == 0) {
+      this.gameOver = true;
+      const dialogRef = this.dialog.open(NewGameComponent);
+      dialogRef.disableClose = true;
+      dialogRef.afterClosed().subscribe(() => {
+
+        this.gameOver = false;
+        this.game.createDeck();
+        this.game.playedCards = [];
+        this.game.currentCard = '';
+        this.updateGame();
+
+      });
+    }
+    else if (!this.game.takeCardAnimation && this.minTwoPlayers()) {
       this.game.currentCard = this.game.deck.pop() as string;
       this.game.takeCardAnimation = true;
       this.game.playedCards.push(this.game.currentCard);
