@@ -36,8 +36,6 @@ export class GameComponent implements OnInit {
       this.gameId = params['id'];
       this.item$ = docData(pathId);
       this.item$.subscribe((newCard) => {
-        console.log(newCard);
-
         this.setDatabase(newCard);
       });
     });
