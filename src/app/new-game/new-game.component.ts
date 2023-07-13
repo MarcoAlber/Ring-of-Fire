@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-game.component.scss']
 })
 export class NewGameComponent {
-  restart: string = '';
+
 }

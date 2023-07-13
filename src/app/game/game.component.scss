@@ -22,6 +22,12 @@
     width: 30%;
     margin-top: 15%;
 
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     img {
         position: absolute;
         height: 100%;

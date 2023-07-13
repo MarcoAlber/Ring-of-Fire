@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-player.component.scss']
 })
 export class EditPlayerComponent {
-
   allProfilePictures = [
     '1.webp',
     '2.png',

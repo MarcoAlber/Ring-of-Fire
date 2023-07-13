@@ -14,6 +14,7 @@ export class StartScreenComponent {
     this.game = new Game();
   }
 
+  /** starts a new game and creates an unique gameID */
   newGame() {
     let itemCollection = collection(this.firestore, 'games');
     addDoc(itemCollection, { game: this.game.toJson() }).then((gameInfo) => {

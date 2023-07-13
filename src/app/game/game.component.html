@@ -10,12 +10,38 @@
 
 <div class="board">
     <div class="card-stack">
-        <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'margin-right.%' : i * 1.5}"
-            src="assets/img/cards/card_cover.png">
-        <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
-        <img (click)="takeCard()" *ngIf="game.takeCardAnimation" [class.take-card]="game.takeCardAnimation"
-            src="assets/img/cards/{{ game.currentCard }}.png">
-        <img *ngFor="let playedCard of game.playedCards" class="take-card" src="assets/img/cards/{{ playedCard }}.png">
+        <div *ngIf="game.deck.length > 4">
+            <img *ngFor="let c of [0, 1, 2, 3]; let i = index;" [ngStyle]="{'margin-right.%' : i * 1.5}"
+                src="assets/img/cards/card_cover.png">
+            <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
+        </div>
+        <div *ngIf="game.deck.length == 4">
+            <img *ngFor="let c of [0, 1, 2]; let i = index;" [ngStyle]="{'margin-right.%' : i * 2}"
+                src="assets/img/cards/card_cover.png">
+            <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
+        </div>
+        <div *ngIf="game.deck.length == 3">
+            <img *ngFor="let c of [0, 1]; let i = index;" [ngStyle]="{'margin-right.%' : i * 3}"
+                src="assets/img/cards/card_cover.png">
+            <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
+        </div>
+        <div *ngIf="game.deck.length == 2">
+            <img *ngFor="let c of [0]; let i = index;" [ngStyle]="{'margin-right.%' : 4.5}"
+                src="assets/img/cards/card_cover.png">
+            <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
+        </div>
+        <div *ngIf="game.deck.length == 1">
+            <img (click)="takeCard()" class="top-card" src="assets/img/cards/card_cover.png">
+        </div>
+        <div *ngIf="game.deck.length == 0">
+
+        </div>
+        <div>
+            <img (click)="takeCard()" *ngIf="game.takeCardAnimation" [class.take-card]="game.takeCardAnimation"
+                src="assets/img/cards/{{ game.currentCard }}.png">
+            <img *ngFor="let playedCard of game.playedCards" class="take-card"
+                src="assets/img/cards/{{ playedCard }}.png">
+        </div>
     </div>
 </div>
 
