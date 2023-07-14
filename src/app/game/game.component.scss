@@ -163,6 +163,10 @@
         display: none;
     }
 
+    .btn-add {
+        bottom: 150px;
+    }
+
     .board {
         justify-content: flex-start;
     }
@@ -173,6 +177,7 @@
 
     .card-position {
         left: 25px;
+        right: 25px;
     }
 
     .top-card {
